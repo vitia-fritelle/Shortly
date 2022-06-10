@@ -11,6 +11,7 @@ const config = {
         host: process.env.DATABASE_HOST,
         port: process.env.DATABASE_PORT,
         database: process.env.DATABASE_NAME,
+        url: process.env.DATABASE_URL,
     },
     secretKey: process.env.SECRET_KEY,
 };
