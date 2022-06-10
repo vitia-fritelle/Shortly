@@ -3,8 +3,8 @@ import config from '../config';
 
 const { Pool } = pg;
 
-const DB = function _(user, password, host, port, database) {
-    const pool = new Pool({
+const DB = function _(user, password, host, port, database, url) {
+    const pool = url ? new Pool({ connectionString: url }) : new Pool({
         user,
         password,
         host,
@@ -22,6 +22,7 @@ const db = new DB(
     config.database.host,
     config.database.port,
     config.database.database,
+    config.database.url,
 );
 
 export default db;
