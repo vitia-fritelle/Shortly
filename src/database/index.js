@@ -4,7 +4,7 @@ import config from '../config';
 const { Pool } = pg;
 
 const DB = function _(user, password, host, port, database, url) {
-    const pool = url ? new Pool({ connectionString: url }) : new Pool({
+    const pool = url ? new Pool({ connectionString: url, ssl: true }) : new Pool({
         user,
         password,
         host,
