@@ -4,13 +4,15 @@ import config from '../config';
 const { Pool } = pg;
 
 const DB = function _(user, password, host, port, database, url) {
-    const pool = url ? new Pool({ connectionString: url, ssl: true }) : new Pool({
-        user,
-        password,
-        host,
-        port,
-        database,
-    });
+    const pool = url
+        ? new Pool({ connectionString: url, ssl: { rejectUnauthorized: false } })
+        : new Pool({
+            user,
+            password,
+            host,
+            port,
+            database,
+        });
     this.connect = async () => {
         this.client = await pool.connect();
     };
